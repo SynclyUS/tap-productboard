@@ -24,12 +24,15 @@ jobs:
     - name: Check black
       run: |
         uv run black --check --diff tap_productboard/
-    - name: Check pylint
+    - name: Check isort
       run: |
-        uv run pylint tap_productboard/
+        uv run isort --check tap_productboard/
     - name: Check mypy
       run: |
         uv run mypy tap_productboard/ --explicit-package-bases
+    - name: Check pylint
+      run: |
+        uv run pylint tap_productboard/
 
   pytest:
 

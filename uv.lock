@@ -987,6 +987,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "black" },
+    { name = "isort" },
     { name = "mypy" },
     { name = "pylint" },
     { name = "pytest" },
@@ -998,6 +999,7 @@ requires-dist = [{ name = "singer-sdk", specifier = ">=0.42.1" }]
 [package.metadata.requires-dev]
 dev = [
     { name = "black", specifier = ">=24.10.0" },
+    { name = "isort", specifier = ">=5.13.2" },
     { name = "mypy", specifier = ">=1.13.0" },
     { name = "pylint", specifier = ">=3.3.2" },
     { name = "pytest", specifier = ">=8.3.4" },

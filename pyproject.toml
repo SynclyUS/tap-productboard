@@ -15,6 +15,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "black>=24.10.0",
+    "isort>=5.13.2",
     "mypy>=1.13.0",
     "pylint>=3.3.2",
     "pytest>=8.3.4",
@@ -29,6 +30,11 @@ tap-productboard = "tap_productboard.tap:TapProductboard.cli"
 
 [tool.hatch.build.targets.wheel]
 packages = ["tap_productboard"]
+
+[tool.isort]
+multi_line_output = 3
+profile = "black"
+src_paths = "tap_klaviyo"
 
 [tool.pylint.'MESSAGES CONTROL']
 disable = "missing-module-docstring"
