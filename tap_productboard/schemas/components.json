@@ -39,6 +39,38 @@
               }
             }
           }
+        },
+        "feature": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "links": {
+              "type": "object",
+              "properties": {
+                "self": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "product": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "links": {
+              "type": "object",
+              "properties": {
+                "self": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       }
     },
