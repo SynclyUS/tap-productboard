@@ -1,0 +1,129 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "description": {
+      "type": ["string", "null"]
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "parent": {
+      "type": ["object", "null"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string"
+            },
+            "html": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "progress": {
+      "type": ["object", "null"],
+      "properties": {
+        "startValue": {
+          "type": "integer"
+        },
+        "targetValue": {
+          "type": "integer"
+        },
+        "currentValue": {
+          "type": "integer"
+        },
+        "progress": {
+          "type": "integer"
+        }
+      }
+    },
+    "timeframe": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "startDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "const": "none"
+                }
+              ]
+            },
+            "endDate": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "const": "none"
+                }
+              ]
+            },
+            "granularity": {
+              "type": ["string", "null"]
+            }
+          }
+        }
+      ]
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string"
+        },
+        "html": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["id"]
+}

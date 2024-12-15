@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "domain": {
+      "type": ["string", "null"]
+    },
+    "description": {
+      "type": ["string", "null"]
+    },
+    "sourceOrigin": {
+      "type": ["string", "null"]
+    },
+    "sourceRecordId": {
+      "type": ["string", "null"]
+    }
+  },
+  "required": ["id"]
+}

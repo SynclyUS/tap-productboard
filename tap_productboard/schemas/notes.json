@@ -1,0 +1,145 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": ["string", "null"]
+    },
+    "content": {
+      "type": ["string", "null"]
+    },
+    "displayUrl": {
+      "type": "string"
+    },
+    "externalDisplayUrl": {
+      "type": ["string", "null"]
+    },
+    "company": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["id"]
+    },
+    "user": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": ["id"]
+        }
+      ]
+    },
+    "owner": {
+      "type": ["object", "null"],
+      "properties": {
+        "email": {
+          "type": ["string", "null"]
+        },
+        "name": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "followers": {
+      "type": "array",
+      "item": {
+        "type": "object",
+        "properties": {
+          "memberId": {
+            "type": "string"
+          },
+          "memberName": {
+            "type": ["string", "null"]
+          },
+          "memberEmail": {
+            "type": ["string", "null"]
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "teamName": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "state": {
+      "type": ["string", "null"]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": ["string", "null"]
+        },
+        "record_id": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "tags": {
+      "type": ["array", "null"],
+      "item": {
+        "type": "string"
+      }
+    },
+    "features": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "importance": {
+            "type": ["integer", "null"]
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdBy": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "email": {
+          "type": ["string", "null"]
+        },
+        "name": {
+          "type": ["string", "null"]
+        },
+        "uuid": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["id"]
+}

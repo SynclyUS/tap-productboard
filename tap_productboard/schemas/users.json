@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "email": {
+      "type": ["string", "null"]
+    },
+    "externalId": {
+      "type": ["string", "null"]
+    },
+    "name": {
+      "type": ["string", "null"]
+    }
+  },
+  "required": ["id"]
+}

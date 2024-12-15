@@ -1,0 +1,45 @@
+[project]
+name = "tap-productboard"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    {name = "Jeremy Carbaugh", email = "jeremy@jcarbaugh.com"},
+    {name = "Syncly"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "requests>=2.32.3",
+    "singer-sdk>=0.42.1",
+]
+
+[dependency-groups]
+dev = [
+    "black>=24.10.0",
+    "mypy>=1.13.0",
+    "pytest>=8.3.4",
+    "tox>=4.23.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+tap-productboard = "tap_productboard.tap:TapProductboard.cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tap_productboard"]
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = "bare-except,broad-exception-caught,broad-exception-raised,missing-timeout"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.setuptools]
+packages = ["tap_productboard"]
+
+[tool.uv]
+package = true
+
