@@ -15,9 +15,12 @@ DEFAULT_API_VERSION = "1"
 
 class ProductboardStream(RESTStream):
 
+    url_base = "https://api.productboard.com"
+
+    primary_keys = ["id"]
+
     next_page_token_jsonpath = "$.links.next"
     records_jsonpath = "$.data[*]"
-    url_base = "https://api.productboard.com"
 
     @property
     def authenticator(self) -> Auth:
