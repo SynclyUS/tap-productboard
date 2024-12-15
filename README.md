@@ -10,7 +10,7 @@ You'll need to install [uv](https://github.com/astral-sh/uv).
 
 1. Run `uv sync -p 3.13` to install dependencies.
 1. Copy `.env.example` to `.env` and set `TAP_PRODUCTBOARD_API_KEY` to your [Productboard API key](https://syncly.productboard.com/settings/integrations/api-keys)
-1. If you want to simulate a partial load of notes, uncomment `TAP_PRODUCTBOARD_START_DATE` in `.env` and set a value of an ISO-601 formatted datetime.
+1. If you want to simulate a partial load of notes, uncomment `TAP_PRODUCTBOARD_START_DATE` in `.env` and set a value of an ISO-8601 formatted datetime.
 
 The tap can be run with:
 
