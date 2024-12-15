@@ -1,14 +1,13 @@
 import json
 from functools import cached_property
 from pathlib import Path
-from typing import Any, Union
+from typing import Any, Optional, Union
 from urllib.parse import parse_qs, urlparse
 
 from singer_sdk.authenticators import BearerTokenAuthenticator
 from singer_sdk.exceptions import FatalAPIError
 from singer_sdk.helpers.types import Auth, Context
 from singer_sdk.streams import RESTStream
-from singer_sdk.streams.rest import _TToken
 
 DEFAULT_API_VERSION = "1"
 
@@ -51,7 +50,7 @@ class ProductboardStream(RESTStream):
         return json.loads(path.read_text())
 
     def get_url_params(
-        self, context: Context, next_page_token: _TToken
+        self, context: Optional[Context], next_page_token: Optional[Any]
     ) -> Union[dict[str, Any], str]:
         """Set the pagination param and the replication param, if applicable."""
 
@@ -61,8 +60,8 @@ class ProductboardStream(RESTStream):
             if next_page_token.startswith("https"):
                 url_parts = urlparse(next_page_token)
                 if url_parts.query:
-                    params = parse_qs(url_parts.query)
-                    next_page_token = params.get("pageCursor")
+                    o = parse_qs(url_parts.query)
+                    next_page_token = o.get("pageCursor")
             params["pageCursor"] = next_page_token
 
         start_datetime = self.get_starting_timestamp(context)

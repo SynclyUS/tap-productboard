@@ -27,6 +27,9 @@ jobs:
     - name: Check pylint
       run: |
         uv run pylint tap_productboard/
+    - name: Check mypy
+      run: |
+        uv run mypy tap_productboard/ --explicit-package-bases
 
   pytest:
 
