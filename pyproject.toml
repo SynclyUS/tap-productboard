@@ -31,7 +31,7 @@ tap-productboard = "tap_productboard.tap:TapProductboard.cli"
 packages = ["tap_productboard"]
 
 [tool.pylint.'MESSAGES CONTROL']
-disable = "bare-except,broad-exception-caught,broad-exception-raised,missing-timeout,C0114,C0115"
+disable = "missing-module-docstring"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

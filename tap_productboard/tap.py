@@ -29,6 +29,7 @@ STREAMS = [
 
 
 class TapProductboard(Tap):
+    """Singer tap for Productboard."""
 
     name = "tap-productboard"
 
@@ -44,11 +45,13 @@ class TapProductboard(Tap):
     ).to_dict()
 
     def discover_streams(self) -> Sequence[Stream]:
+        """Return a list of discovered streams."""
         discovered_streams = []
         for stream_class in STREAMS:
             try:
                 stream = stream_class(tap=self)
                 discovered_streams.append(stream)
+            # pylint: disable-next=broad-exception-caught
             except Exception as e:
                 self.logger.error("Error discovering stream %s: %s", stream_class, e)
         return discovered_streams

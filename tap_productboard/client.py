@@ -14,6 +14,7 @@ DEFAULT_API_VERSION = "1"
 
 
 class ProductboardStream(RESTStream):
+    """Base Productboard stream class."""
 
     url_base = "https://api.productboard.com"
 
@@ -24,6 +25,7 @@ class ProductboardStream(RESTStream):
 
     @property
     def authenticator(self) -> Auth:
+        """If api_key is in config, return a BearerTokenAuthenticator."""
         api_key = self.config.get("api_key")
         if api_key:
             return BearerTokenAuthenticator(self, api_key)
@@ -31,6 +33,10 @@ class ProductboardStream(RESTStream):
 
     @property
     def http_headers(self) -> dict:
+        """
+        Set the required X-Version header for the Productboard API version.
+        Optionally set custom User-Agent or Productboard-Partner-Id headers.
+        """
         headers = {"X-Version": getattr(self, "api_version", DEFAULT_API_VERSION)}
         if "user_agent" in self.config:
             headers["User-Agent"] = self.config.get("user_agent")
@@ -40,12 +46,14 @@ class ProductboardStream(RESTStream):
 
     @cached_property
     def schema(self) -> dict:
+        """Load schema from the schemas directory based on the stream name."""
         path = Path(__file__).parent / "schemas" / f"{self.name}.json"
         return json.loads(path.read_text())
 
     def get_url_params(
         self, context: Context, next_page_token: _TToken
     ) -> Union[dict[str, Any], str]:
+        """Set the pagination param and the replication param, if applicable."""
 
         params = {}
 
