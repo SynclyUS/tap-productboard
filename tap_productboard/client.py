@@ -1,7 +1,7 @@
 import json
 from functools import cached_property
 from pathlib import Path
-from typing import Any
+from typing import Any, Union
 from urllib.parse import parse_qs, urlparse
 
 from singer_sdk.authenticators import BearerTokenAuthenticator
@@ -42,7 +42,7 @@ class ProductboardStream(RESTStream):
 
     def get_url_params(
         self, context: Context, next_page_token: _TToken
-    ) -> dict[str, Any] | str:
+    ) -> Union[dict[str, Any], str]:
 
         params = {}
 
