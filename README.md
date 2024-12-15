@@ -4,7 +4,9 @@ A [Singer](https://www.singer.io) tap for [Productboard](https://www.productboar
 
 ## Local Development
 
-Developed with Python 3.13. You'll need to install [uv](https://github.com/astral-sh/uv).
+Developed with Python 3.13, supports Python 3.9, 3.10, 3.11, 3.12, and 3.13.
+
+You'll need to install [uv](https://github.com/astral-sh/uv).
 
 1. Run `uv sync -p 3.13` to install dependencies.
 1. Copy `.env.example` to `.env` and set `TAP_PRODUCTBOARD_API_KEY` to your [Productboard API key](https://syncly.productboard.com/settings/integrations/api-keys)
