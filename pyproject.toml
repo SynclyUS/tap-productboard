@@ -1,7 +1,7 @@
 [project]
 name = "tap-productboard"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Singer tap for Productboard"
 authors = [
     {name = "Jeremy Carbaugh", email = "jeremy@jcarbaugh.com"},
     {name = "Syncly"}
