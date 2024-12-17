@@ -1,5 +1,7 @@
 # Productboard Tap
 
+[![Test tap-productboard](https://github.com/jcarbaugh/tap-productboard/actions/workflows/ci_workflow.yml/badge.svg)](https://github.com/jcarbaugh/tap-productboard/actions/workflows/ci_workflow.yml)
+
 A [Singer](https://www.singer.io) tap for [Productboard](https://www.productboard.com).
 
 ## Local Development
