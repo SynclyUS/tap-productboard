@@ -30,7 +30,7 @@ STREAMS = [
 class TapProductboard(Tap):
     """Singer tap for Productboard."""
 
-    name = "tap-productboard"
+    name = "productboard"
 
     config_jsonschema = th.PropertiesList(
         th.Property("api_key", th.StringType, required=True, title="API Key"),
