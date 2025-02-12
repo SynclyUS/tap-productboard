@@ -60,9 +60,14 @@ class ProductboardStream(RESTStream):
             if next_page_token.startswith("https"):
                 url_parts = urlparse(next_page_token)
                 if url_parts.query:
-                    o = parse_qs(url_parts.query)
-                    next_page_token = o.get("pageCursor")
-            params["pageCursor"] = next_page_token
+                    parsed_query = parse_qs(url_parts.query)
+                    page_cursor = parsed_query.get("pageCursor", [None])[0]
+                    page_offset = parsed_query.get("pageOffset", [None])[0]
+
+                    if page_cursor:
+                        params["pageCursor"] = page_cursor
+                    elif page_offset:
+                        params["pageOffset"] = page_offset
 
         start_datetime = self.get_starting_timestamp(context)
         if self.replication_key and start_datetime:
