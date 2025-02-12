@@ -95,26 +95,12 @@
       "type": ["null", "object"],
       "properties": {
         "startDate": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date"
-            },
-            {
-              "const": "none"
-            }
-          ]
+          "type": ["string", "null"],
+          "format": "date"
         },
         "endDate": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date"
-            },
-            {
-              "const": "none"
-            }
-          ]
+          "type": ["string", "null"],
+          "format": "date"
         },
         "granularity": {
           "type": ["string", "null"]

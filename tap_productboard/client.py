@@ -75,3 +75,19 @@ class ProductboardStream(RESTStream):
             params[key] = start_datetime.strftime("%Y-%m-%d")
 
         return params
+
+    def parse_response(self, response: dict) -> list:
+        """
+        Process API response to replace 'none' with None in only the timeframe attributes.
+        """
+        def clean_timeframe(data):
+            if isinstance(data, dict) and "timeframe" in data:
+                timeframe = data["timeframe"]
+                if isinstance(timeframe, dict):
+                    for key in ["startDate", "endDate", "granularity"]:
+                        if timeframe.get(key) == "none":
+                            timeframe[key] = None
+            return data
+
+        parsed_data = response.json()
+        return [clean_timeframe(record) for record in parsed_data.get("data", [])]
