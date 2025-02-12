@@ -29,20 +29,13 @@
       "required": ["id"]
     },
     "user": {
-      "anyOf": [
-        {
-          "type": "null"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            }
-          },
-          "required": ["id"]
+      "type": ["null", "object"],
+      "properties": {
+        "id": {
+          "type": "string"
         }
-      ]
+      },
+      "required": ["id"]
     },
     "owner": {
       "type": ["object", "null"],

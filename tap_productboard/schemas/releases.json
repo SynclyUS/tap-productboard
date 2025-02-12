@@ -31,41 +31,34 @@
       "required": ["id"]
     },
     "timeframe": {
-      "anyOf": [
-        {
-          "type": "null"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "startDate": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date"
-                },
-                {
-                  "const": "none"
-                }
-              ]
+      "type": ["null", "object"],
+      "properties": {
+        "startDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
             },
-            "endDate": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date"
-                },
-                {
-                  "const": "none"
-                }
-              ]
-            },
-            "granularity": {
-              "type": ["string", "null"]
+            {
+              "const": "none"
             }
-          }
+          ]
+        },
+        "endDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "const": "none"
+            }
+          ]
+        },
+        "granularity": {
+          "type": ["string", "null"]
         }
-      ]
+      }
     },
     "state": {
       "type": "string"

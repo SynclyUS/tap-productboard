@@ -14,76 +14,46 @@
       "type": ["integer", "null"]
     },
     "parent": {
-      "anyOf": [
-        {
-          "type": "null"
+      "type": ["null", "object"],
+      "properties": {
+        "id": {
+          "type": "string"
         },
-        {
+        "links": {
           "type": "object",
           "properties": {
-            "id": {
-              "type": "string"
-            },
-            "links": {
-              "type": "object",
-              "properties": {
-                "self": {
-                  "type": "string"
-                },
-                "html": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "required": ["id"]
+            "self": { "type": "string" },
+            "html": { "type": "string" }
+          }
         }
-      ]
+      },
+      "required": ["id"]
     },
     "owner": {
       "type": "object",
       "properties": {
-        "email": {
-          "type": "string"
-        }
+        "email": { "type": "string" }
       }
     },
     "timeframe": {
-      "anyOf": [
-        {
-          "type": "null"
+      "type": ["null", "object"],
+      "properties": {
+        "startDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            { "const": "none" }
+          ]
         },
-        {
-          "type": "object",
-          "properties": {
-            "startDate": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date"
-                },
-                {
-                  "const": "none"
-                }
-              ]
-            },
-            "endDate": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date"
-                },
-                {
-                  "const": "none"
-                }
-              ]
-            },
-            "granularity": {
-              "type": ["string", "null"]
-            }
-          }
+        "endDate": {
+          "anyOf": [{ "type": "string", "format": "date" }, { "const": "none" }]
+        },
+        "granularity": {
+          "type": ["string", "null"]
         }
-      ]
+      }
     },
     "state": {
       "type": ["string", "null"]
@@ -91,12 +61,8 @@
     "status": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
+        "id": { "type": "string" },
+        "name": { "type": "string" }
       }
     },
     "archived": {
