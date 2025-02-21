@@ -20,41 +20,20 @@
       }
     },
     "timeframe": {
-      "anyOf": [
-        {
-          "type": "null"
+      "type": ["null", "object"],
+      "properties": {
+        "startDate": {
+          "type": ["string", "null"],
+          "format": "date"
         },
-        {
-          "type": "object",
-          "properties": {
-            "startDate": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date"
-                },
-                {
-                  "const": "none"
-                }
-              ]
-            },
-            "endDate": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "date"
-                },
-                {
-                  "const": "none"
-                }
-              ]
-            },
-            "granularity": {
-              "type": ["string", "null"]
-            }
-          }
+        "endDate": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "granularity": {
+          "type": ["string", "null"]
         }
-      ]
+      }
     },
     "status": {
       "type": "object",

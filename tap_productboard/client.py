@@ -60,9 +60,14 @@ class ProductboardStream(RESTStream):
             if next_page_token.startswith("https"):
                 url_parts = urlparse(next_page_token)
                 if url_parts.query:
-                    o = parse_qs(url_parts.query)
-                    next_page_token = o.get("pageCursor")
-            params["pageCursor"] = next_page_token
+                    parsed_query = parse_qs(url_parts.query)
+                    page_cursor = parsed_query.get("pageCursor", [None])[0]
+                    page_offset = parsed_query.get("pageOffset", [None])[0]
+
+                    if page_cursor:
+                        params["pageCursor"] = page_cursor
+                    elif page_offset:
+                        params["pageOffset"] = page_offset
 
         start_datetime = self.get_starting_timestamp(context)
         if self.replication_key and start_datetime:
@@ -70,3 +75,19 @@ class ProductboardStream(RESTStream):
             params[key] = start_datetime.strftime("%Y-%m-%d")
 
         return params
+
+    def parse_response(self, response: dict) -> list:
+        """
+        Process API response to replace 'none' with None in only the timeframe attributes.
+        """
+        def clean_timeframe(data):
+            if isinstance(data, dict) and "timeframe" in data:
+                timeframe = data["timeframe"]
+                if isinstance(timeframe, dict):
+                    for key in ["startDate", "endDate", "granularity"]:
+                        if timeframe.get(key) == "none":
+                            timeframe[key] = None
+            return data
+
+        parsed_data = response.json()
+        return [clean_timeframe(record) for record in parsed_data.get("data", [])]
