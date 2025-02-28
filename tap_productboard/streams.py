@@ -1,5 +1,6 @@
 from tap_productboard.client import ProductboardStream
-
+from typing import Any, Optional, Union
+from singer_sdk.helpers.types import Context
 
 class CompaniesStream(ProductboardStream):
     """
@@ -65,6 +66,16 @@ class NotesStream(ProductboardStream):
     replication_key = "updatedAt"
     replication_param = "updatedFrom"
     next_page_token_jsonpath = "$.pageCursor"
+
+    def get_url_params(
+        self, context: Optional[Context], next_page_token: Optional[Any]
+    ) -> Union[dict[str, Any], str]:
+        params = super().get_url_params(context, next_page_token)
+
+        if next_page_token:
+            params["pageCursor"] = next_page_token
+
+        return params
 
 
 class ObjectivesStream(ProductboardStream):
